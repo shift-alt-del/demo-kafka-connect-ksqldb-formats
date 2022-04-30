@@ -10,7 +10,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: mysql-pw
-      MYSQL_DATABASE: call-center
+      MYSQL_DATABASE: demo
       MYSQL_USER: example-user
       MYSQL_PASSWORD: example-pw
     volumes:

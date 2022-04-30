@@ -58,15 +58,15 @@ docker-compose up -d
 docker exec -i mysql mysql -uroot -pmysql-pw < ./mysql/init.sql
 
 # create tables
-docker exec -i mysql mysql -uroot -pmysql-pw call-center < ./mysql/create_table.sql
+docker exec -i mysql mysql -uroot -pmysql-pw demo < ./mysql/create_table.sql
 
 # import dummy data
-docker exec -i mysql mysql -uroot -pmysql-pw call-center < ./mysql/add_data.sql
+docker exec -i mysql mysql -uroot -pmysql-pw demo < ./mysql/add_data.sql
 
 # check tables creation
-docker exec -it mysql mysql -uroot -pmysql-pw call-center -e "show tables;"
-docker exec -it mysql mysql -uroot -pmysql-pw call-center -e "select * from table_key_str limit 1;"
-docker exec -it mysql mysql -uroot -pmysql-pw call-center -e "select * from table_key_int limit 1;"
+docker exec -it mysql mysql -uroot -pmysql-pw demo -e "show tables;"
+docker exec -it mysql mysql -uroot -pmysql-pw demo -e "select * from table_key_str limit 1;"
+docker exec -it mysql mysql -uroot -pmysql-pw demo -e "select * from table_key_int limit 1;"
 ```
 
 ## init connect
@@ -83,7 +83,7 @@ SET 'auto.offset.reset' = 'earliest';
 # https://docs.confluent.io/platform/current/connect/transforms/extractfield.html
 CREATE SOURCE CONNECTOR demo_source_connector WITH (
     'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/call-center',
+    'connection.url'='jdbc:mysql://mysql:3306/demo',
     'connection.user'='example-user',
     'connection.password'='example-pw',
     'topic.prefix'='mysql-',
@@ -92,7 +92,7 @@ CREATE SOURCE CONNECTOR demo_source_connector WITH (
     'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
 
     'poll.interval.ms'=3600000,
-    'table.whitelist'='call-center.table_key_str,call-center.table_key_int',
+    'table.whitelist'='demo.table_key_str,demo.table_key_int',
     'mode'='bulk',
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
