@@ -1,0 +1,12 @@
+DROP CONNECTOR connect_avro_str;
+DROP CONNECTOR connect_avro_int;
+DROP CONNECTOR connect_protobuf_str;
+DROP CONNECTOR connect_protobuf_int;
+DROP CONNECTOR connect_jsonschema_str;
+DROP CONNECTOR connect_jsonschema_int;
+DROP CONNECTOR connect_json_str;
+DROP CONNECTOR connect_json_int;
+DROP CONNECTOR connect_string_str;
+DROP CONNECTOR connect_string_int;
+DROP CONNECTOR connect_bytearray_str;
+DROP CONNECTOR connect_bytearray_int;

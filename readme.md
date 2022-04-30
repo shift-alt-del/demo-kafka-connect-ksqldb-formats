@@ -81,25 +81,8 @@ SET 'auto.offset.reset' = 'earliest';
 # https://docs.confluent.io/platform/current/connect/transforms/valuetokey.html#valuetokey
 # SMT - ExtractField$Key:
 # https://docs.confluent.io/platform/current/connect/transforms/extractfield.html
-CREATE SOURCE CONNECTOR demo_source_connector WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='mysql-',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
-
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str,demo.table_key_int',
-    'mode'='bulk',
-    'transforms'='createKey,extractFieldAskey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id',
-    'transforms.extractFieldAskey.type'='org.apache.kafka.connect.transforms.ExtractField$Key',
-    'transforms.extractFieldAskey.field'='user_id'
-);
+Refer to: ./connect/auto_generated.txt
 ```
 
 ## Appendix:
