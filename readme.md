@@ -19,11 +19,12 @@ Converters:
 ## connector
 Documents:
 - https://docs.confluent.io/kafka-connect-jdbc/current/source-connector/index.html
+- Notice: msyql driver (`mysql-connector-java-x.x.xx.jar`) is not included, please donwload it by yourself. 
 
 ```
 mkdir confluent-hub-components
 
-# ignore errors
+# safe to ignore CP license errors
 confluent-hub install --component-dir confluent-hub-components --no-prompt confluentinc/kafka-connect-jdbc:10.4.1
 ```
 
@@ -86,6 +87,10 @@ CREATE SOURCE CONNECTOR demo_source_connector WITH (
     'connection.user'='example-user',
     'connection.password'='example-pw',
     'topic.prefix'='mysql-',
+
+    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+    'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
+
     'poll.interval.ms'=3600000,
     'table.whitelist'='call-center.table_key_str,call-center.table_key_int',
     'mode'='bulk',
@@ -95,11 +100,6 @@ CREATE SOURCE CONNECTOR demo_source_connector WITH (
     'transforms.extractFieldAskey.type'='org.apache.kafka.connect.transforms.ExtractField$Key',
     'transforms.extractFieldAskey.field'='user_id'
 );
-```
-
-example for optional SMT
-```
-
 ```
 
 ## Appendix:
