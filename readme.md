@@ -65,8 +65,8 @@ docker exec -i mysql mysql -uroot -pmysql-pw demo < ./mysql/add_data.sql
 
 # check tables creation
 docker exec -it mysql mysql -uroot -pmysql-pw demo -e "show tables;"
-docker exec -it mysql mysql -uroot -pmysql-pw demo -e "select * from table_key_str limit 1;"
-docker exec -it mysql mysql -uroot -pmysql-pw demo -e "select * from table_key_int limit 1;"
+docker exec -it mysql mysql -uroot -pmysql-pw demo -e "select * from event_str limit 1;"
+docker exec -it mysql mysql -uroot -pmysql-pw demo -e "select * from event_int limit 1;"
 ```
 
 ## init connect
@@ -88,12 +88,12 @@ SHOW TOPICS;
 ## check key format.
 ```
 cd tools
-python3 consumer.py multiple_string_table_key_int
+python3 consumer.py multiple_string_event_int
 ```
 
 it will prints out key bytes, value bytes, schema_id, schema_api_url, schema. 
 ```
-topic=single_jsonschema_table_key_str
+topic=single_jsonschema_event_str
 key=b'\x00\x00\x00\x00\x06"BBB"'
 value=b'\x00\x00\x00\x00\x03\x02\x06BBB\x02\x08help\x02\xc0\x03'
 schema_id=6
@@ -106,71 +106,6 @@ schema={'schemaType': 'JSON', 'schema': '{"oneOf":[{"type":"null"},{"type":"stri
 docker-compose down -v
 ```
 
-## results
-
-- connectors will be creatd successfully, except `bytearray` converter.
-- each connector will source data to individual topics.
-- AvroConverter,ProtobufConverter,JsonSchemaConverter - bytes key, with SR schema.
-- JsonConverter - bytes(json) key with schema inside, no SR.
-- StringConverter - bytes(json) key, no SR.
-- ByteArrayConverter - ?
-```
-ksql> show connectors;
-
- Connector Name                  | Type   | Class                                         | Status                      
-------------------------------------------------------------------------------------------------------------------------
- CONNECT_SINGLE_STRING_INT       | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_PROTOBUF_STR   | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_PROTOBUF_INT   | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_PROTOBUF_STR     | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_PROTOBUF_INT     | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_STRING_STR       | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_BYTEARRAY_STR  | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | WARNING (0/1 tasks RUNNING) 
- CONNECT_SINGLE_BYTEARRAY_STR    | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | WARNING (0/1 tasks RUNNING) 
- CONNECT_MULTIPLE_JSON_STR       | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_JSON_STR         | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_JSON_INT       | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_JSON_INT         | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_JSONSCHEMA_INT | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_JSONSCHEMA_STR | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_AVRO_STR         | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_AVRO_INT       | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_AVRO_INT         | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_AVRO_STR       | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_STRING_INT     | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_STRING_STR     | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_JSONSCHEMA_INT   | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_SINGLE_BYTEARRAY_INT    | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | WARNING (0/1 tasks RUNNING) 
- CONNECT_SINGLE_JSONSCHEMA_STR   | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | RUNNING (1/1 tasks RUNNING) 
- CONNECT_MULTIPLE_BYTEARRAY_INT  | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector | WARNING (0/1 tasks RUNNING) 
-------------------------------------------------------------------------------------------------------------------------
-
-ksql> show topics;
-
- Kafka Topic                       | Partitions | Partition Replicas 
----------------------------------------------------------------------
-
- multiple_avro_table_key_int       | 1          | 1                  
- multiple_avro_table_key_str       | 1          | 1                  
- multiple_json_table_key_int       | 1          | 1                  
- multiple_json_table_key_str       | 1          | 1                  
- multiple_jsonschema_table_key_int | 1          | 1                  
- multiple_jsonschema_table_key_str | 1          | 1                  
- multiple_protobuf_table_key_int   | 1          | 1                  
- multiple_protobuf_table_key_str   | 1          | 1                  
- multiple_string_table_key_int     | 1          | 1                  
- multiple_string_table_key_str     | 1          | 1                  
- single_avro_table_key_int         | 1          | 1                  
- single_avro_table_key_str         | 1          | 1                  
- single_json_table_key_int         | 1          | 1                  
- single_json_table_key_str         | 1          | 1                  
- single_jsonschema_table_key_int   | 1          | 1                  
- single_jsonschema_table_key_str   | 1          | 1                  
- single_protobuf_table_key_int     | 1          | 1                  
- single_protobuf_table_key_str     | 1          | 1                  
- single_string_table_key_int       | 1          | 1                  
- single_string_table_key_str       | 1          | 1                  
-```
 
 ## appendix:
 Data dir error on container startup, could be fixed by run script as below.

@@ -9,9 +9,10 @@ CREATE SOURCE CONNECTOR connect_single_avro_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.avro.AvroConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -30,9 +31,10 @@ CREATE SOURCE CONNECTOR connect_single_avro_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.avro.AvroConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -51,9 +53,10 @@ CREATE SOURCE CONNECTOR connect_single_protobuf_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -72,9 +75,10 @@ CREATE SOURCE CONNECTOR connect_single_protobuf_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -93,9 +97,10 @@ CREATE SOURCE CONNECTOR connect_single_jsonschema_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -114,9 +119,10 @@ CREATE SOURCE CONNECTOR connect_single_jsonschema_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -135,9 +141,10 @@ CREATE SOURCE CONNECTOR connect_single_json_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -156,9 +163,10 @@ CREATE SOURCE CONNECTOR connect_single_json_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -177,9 +185,10 @@ CREATE SOURCE CONNECTOR connect_single_string_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -198,51 +207,10 @@ CREATE SOURCE CONNECTOR connect_single_string_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
-
-    'transforms'='createKey,extractFieldAskey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id',
-    'transforms.extractFieldAskey.type'='org.apache.kafka.connect.transforms.ExtractField$Key',
-    'transforms.extractFieldAskey.field'='user_id'
-);
-
-CREATE SOURCE CONNECTOR connect_single_bytearray_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_bytearray_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.converters.ByteArrayConverter',
-
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
-
-    'transforms'='createKey,extractFieldAskey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id',
-    'transforms.extractFieldAskey.type'='org.apache.kafka.connect.transforms.ExtractField$Key',
-    'transforms.extractFieldAskey.field'='user_id'
-);
-
-CREATE SOURCE CONNECTOR connect_single_bytearray_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_bytearray_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.converters.ByteArrayConverter',
-
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -261,9 +229,10 @@ CREATE SOURCE CONNECTOR connect_multiple_avro_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.avro.AvroConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -280,9 +249,10 @@ CREATE SOURCE CONNECTOR connect_multiple_avro_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.avro.AvroConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -299,9 +269,10 @@ CREATE SOURCE CONNECTOR connect_multiple_protobuf_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -318,9 +289,10 @@ CREATE SOURCE CONNECTOR connect_multiple_protobuf_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -337,9 +309,10 @@ CREATE SOURCE CONNECTOR connect_multiple_jsonschema_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -356,9 +329,10 @@ CREATE SOURCE CONNECTOR connect_multiple_jsonschema_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -375,9 +349,10 @@ CREATE SOURCE CONNECTOR connect_multiple_json_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -394,9 +369,10 @@ CREATE SOURCE CONNECTOR connect_multiple_json_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -413,9 +389,10 @@ CREATE SOURCE CONNECTOR connect_multiple_string_str WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_str',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -432,47 +409,10 @@ CREATE SOURCE CONNECTOR connect_multiple_string_int WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
 
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_bytearray_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_bytearray_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.converters.ByteArrayConverter',
-
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_str',
-    'mode'='bulk',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_bytearray_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_bytearray_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.converters.ByteArrayConverter',
-
-    'poll.interval.ms'=3600000,
-    'table.whitelist'='demo.table_key_int',
-    'mode'='bulk',
+    'poll.interval.ms'=5000,
+    'table.whitelist'='demo.event_int',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 
     'transforms'='createKey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',

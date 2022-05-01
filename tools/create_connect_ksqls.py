@@ -18,7 +18,9 @@ CONVERTER_MAPPING = {
     'JsonSchemaConverter': 'io.confluent.connect.json.JsonSchemaConverter',
     'JsonConverter': 'org.apache.kafka.connect.json.JsonConverter',
     'StringConverter': 'org.apache.kafka.connect.storage.StringConverter',
-    'ByteArrayConverter': 'org.apache.kafka.connect.converters.ByteArrayConverter',
+    
+    # ByteArrayConverter does not work with this use case.
+    # 'ByteArrayConverter': 'org.apache.kafka.connect.converters.ByteArrayConverter',
 }
 
 ksql_mst_single_column = """
@@ -44,7 +46,7 @@ if __name__ == '__main__':
                 # make names shorter and to lower()
                 short_converter_name = converter_name.replace('Converter', '').lower()
 
-                for table_name in ['demo.table_key_str','demo.table_key_int']:
+                for table_name in ['demo.event_str','demo.event_int']:
                     # str or int, to lower()
                     short_table_name = table_name.split('.')[-1].split('_')[-1].lower()
 
@@ -62,9 +64,10 @@ CREATE SOURCE CONNECTOR {connector_id} WITH (
     'key.converter.schema.registry.url' = 'http://schema-registry:8081',
     'key.converter' = '{converter_path}',
 
-    'poll.interval.ms'=3600000,
+    'poll.interval.ms'=5000,
     'table.whitelist'='{table_name}',
-    'mode'='bulk',
+    'mode'='incrementing',
+    'incrementing.column.name'='id',
 """
 
                     if is_single_column:
