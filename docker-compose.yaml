@@ -97,4 +97,4 @@ services:
     entrypoint: /bin/sh
     tty: true
     volumes:
-      - "./connect:/tmp/scripts"
+      - "./ksql:/tmp/scripts"

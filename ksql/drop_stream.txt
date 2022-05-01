@@ -1,0 +1,16 @@
+DROP STREAM s_single_avro_str;
+DROP STREAM s_single_avro_int;
+DROP STREAM s_single_jsonschema_str;
+DROP STREAM s_single_jsonschema_int;
+DROP STREAM s_single_json_str;
+DROP STREAM s_single_json_int;
+DROP STREAM s_single_string_str;
+DROP STREAM s_single_string_int;
+DROP STREAM s_multiple_avro_str;
+DROP STREAM s_multiple_avro_int;
+DROP STREAM s_multiple_jsonschema_str;
+DROP STREAM s_multiple_jsonschema_int;
+DROP STREAM s_multiple_json_str;
+DROP STREAM s_multiple_json_int;
+DROP STREAM s_multiple_string_str;
+DROP STREAM s_multiple_string_int;

@@ -76,13 +76,12 @@ docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
 SET 'auto.offset.reset' = 'earliest';
 
 # submit connectors
-RUN SCRIPT '/tmp/scripts/auto_generated_create.txt';
+RUN SCRIPT '/tmp/scripts/create_connect.txt';
 
-# check connectors
-SHOW CONNECTORS;
+# create streams
+RUN SCRIPT '/tmp/scripts/create_stream.txt';
 
-# check topics
-SHOW TOPICS;
+
 ```
 
 ## check key format.
@@ -100,6 +99,8 @@ schema_id=6
 schema_api_url=http://localhost:8081/schemas/ids/6
 schema={'schemaType': 'JSON', 'schema': '{"oneOf":[{"type":"null"},{"type":"string"}]}'}
 ``` 
+
+# todo: create stream, create table
 
 ## fin
 ```
