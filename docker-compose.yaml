@@ -96,3 +96,5 @@ services:
       - ksqldb-server
     entrypoint: /bin/sh
     tty: true
+    volumes:
+      - "./connect:/tmp/scripts"
