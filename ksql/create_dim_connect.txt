@@ -80,28 +80,3 @@ CREATE SOURCE CONNECTOR connect_dim_multiple_string_str WITH (
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
     'transforms.createKey.fields'='user_id,reason_id'
 );
-
--- create ksql tables from topics
-CREATE TABLE t_dim_user_avro WITH (
-    KAFKA_TOPIC='single_avro_dim_user',
-    KEY_FORMAT='AVRO',
-    VALUE_FORMAT='AVRO',
-    TIMESTAMP = 'ts',
-    TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss'
-);
-CREATE TABLE t_dim_user_string (ROWKEY STRING PRIMARY KEY) WITH (
-    KAFKA_TOPIC='single_string_dim_user',
-    KEY_FORMAT='KAFKA',
-    VALUE_FORMAT='AVRO',
-    TIMESTAMP = 'ts',
-    TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss'
-);
-
--- multiple
-CREATE TABLE t_dim_user_reason_avro WITH (
-    KAFKA_TOPIC='multiple_avro_dim_user_reason',
-    KEY_FORMAT='AVRO',
-    VALUE_FORMAT='AVRO',
-    TIMESTAMP = 'ts',
-    TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss'
-);
