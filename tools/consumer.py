@@ -1,8 +1,9 @@
 import sys
+import uuid
 from io import BytesIO
 from struct import unpack
 import requests
-from confluent_kafka import DeserializingConsumer, Consumer
+from confluent_kafka import Consumer
 
 # schema_id: schema_str
 # to avoid calling schema-registry too much.
@@ -14,7 +15,7 @@ schema_cache = {}
 conf = {
     'bootstrap.servers': 'localhost:29092',
     'auto.offset.reset': 'earliest',
-    'group.id': 'groupidfortest',
+    'group.id': str(uuid.uuid4().hex),
 }
 
 # initialize consumer instance
@@ -55,7 +56,7 @@ while True:
                 print(f'schema={schema_str}')
             else:
                 print('schema=None')
-                
+
 
     except KeyboardInterrupt:
         break

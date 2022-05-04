@@ -1,0 +1,89 @@
+CREATE SOURCE CONNECTOR connect_dim_single_avro_str WITH (
+    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+    'connection.url'='jdbc:mysql://mysql:3306/demo',
+    'connection.user'='example-user',
+    'connection.password'='example-pw',
+    'topic.prefix'='single_avro_',
+
+    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+    'key.converter' = 'io.confluent.connect.avro.AvroConverter',
+
+    'poll.interval.ms'=60000,
+    'table.whitelist'='demo.dim_user',
+    'mode'='bulk',
+
+    'transforms'='createKey,extractFieldAskey',
+    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
+    'transforms.createKey.fields'='user_id',
+    'transforms.extractFieldAskey.type'='org.apache.kafka.connect.transforms.ExtractField$Key',
+    'transforms.extractFieldAskey.field'='user_id'
+);
+
+
+CREATE SOURCE CONNECTOR connect_dim_single_string_str WITH (
+    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+    'connection.url'='jdbc:mysql://mysql:3306/demo',
+    'connection.user'='example-user',
+    'connection.password'='example-pw',
+    'topic.prefix'='single_string_',
+
+    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+    'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
+
+    'poll.interval.ms'=60000,
+    'table.whitelist'='demo.dim_user',
+    'mode'='bulk',
+
+    'transforms'='createKey,extractFieldAskey',
+    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
+    'transforms.createKey.fields'='user_id',
+    'transforms.extractFieldAskey.type'='org.apache.kafka.connect.transforms.ExtractField$Key',
+    'transforms.extractFieldAskey.field'='user_id'
+);
+
+
+CREATE SOURCE CONNECTOR connect_dim_multiple_avro_str WITH (
+    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+    'connection.url'='jdbc:mysql://mysql:3306/demo',
+    'connection.user'='example-user',
+    'connection.password'='example-pw',
+    'topic.prefix'='multiple_avro_',
+
+    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+    'key.converter' = 'io.confluent.connect.avro.AvroConverter',
+
+    'poll.interval.ms'=60000,
+    'table.whitelist'='demo.dim_user_reason',
+    'mode'='bulk',
+
+    'transforms'='createKey',
+    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
+    'transforms.createKey.fields'='user_id,reason_id'
+);
+
+
+CREATE SOURCE CONNECTOR connect_dim_multiple_string_str WITH (
+    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+    'connection.url'='jdbc:mysql://mysql:3306/demo',
+    'connection.user'='example-user',
+    'connection.password'='example-pw',
+    'topic.prefix'='multiple_string_',
+
+    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+    'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
+
+    'poll.interval.ms'=60000,
+    'table.whitelist'='demo.dim_user_reason',
+    'mode'='bulk',
+
+    'transforms'='createKey',
+    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
+    'transforms.createKey.fields'='user_id,reason_id'
+);
+
+-- create ksql tables from topics
+CREATE TABLE t_dim_user_avro WITH (KAFKA_TOPIC='single_avro_dim_user', KEY_FORMAT='AVRO', VALUE_FORMAT='AVRO');
+CREATE TABLE t_dim_user_string (ROWKEY STRING PRIMARY KEY) WITH (KAFKA_TOPIC='single_string_dim_user', KEY_FORMAT='KAFKA', VALUE_FORMAT='AVRO');
+
+-- multiple
+CREATE TABLE t_dim_user_reason_avro WITH (KAFKA_TOPIC='multiple_avro_dim_user_reason', KEY_FORMAT='AVRO', VALUE_FORMAT='AVRO');

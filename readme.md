@@ -100,7 +100,21 @@ schema_api_url=http://localhost:8081/schemas/ids/6
 schema={'schemaType': 'JSON', 'schema': '{"oneOf":[{"type":"null"},{"type":"string"}]}'}
 ``` 
 
-# todo: create stream, create table
+# create tables for join
+- create connectors for dim_user table in string, avro formats.
+- create ksql table for dims in string, avro formats.
+```
+# import dimentions 
+RUN SCRIPT '/tmp/scripts/create_connect_dims.txt';
+
+
+# join single column
+select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_AVRO t on s.user_id = t.rowkey emit changes;
+select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_STRING t on s.user_id = t.rowkey emit changes;
+
+# join multiple column
+select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_REASON_AVRO t on STRUCT(user_id:=s.user_id, reason_id:=s.reason) = t.rowkey emit changes;
+```
 
 ## fin
 ```

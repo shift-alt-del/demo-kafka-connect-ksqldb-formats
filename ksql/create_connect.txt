@@ -1,18 +1,18 @@
 
 CREATE SOURCE CONNECTOR connect_single_avro_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_avro_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_avro_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.avro.AvroConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'io.confluent.connect.avro.AvroConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_str',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -22,19 +22,19 @@ CREATE SOURCE CONNECTOR connect_single_avro_str WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_avro_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_avro_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_avro_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.avro.AvroConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'io.confluent.connect.avro.AvroConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_int',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -44,19 +44,19 @@ CREATE SOURCE CONNECTOR connect_single_avro_int WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_protobuf_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_protobuf_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_protobuf_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_str',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -66,19 +66,19 @@ CREATE SOURCE CONNECTOR connect_single_protobuf_str WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_protobuf_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_protobuf_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_protobuf_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_int',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -88,19 +88,19 @@ CREATE SOURCE CONNECTOR connect_single_protobuf_int WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_jsonschema_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_jsonschema_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_jsonschema_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_str',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -110,19 +110,19 @@ CREATE SOURCE CONNECTOR connect_single_jsonschema_str WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_jsonschema_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_jsonschema_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_jsonschema_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_int',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -132,19 +132,19 @@ CREATE SOURCE CONNECTOR connect_single_jsonschema_int WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_json_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_json_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_json_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_str',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -154,19 +154,19 @@ CREATE SOURCE CONNECTOR connect_single_json_str WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_json_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_json_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_json_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_int',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -176,19 +176,19 @@ CREATE SOURCE CONNECTOR connect_single_json_int WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_string_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_string_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_string_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_str',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
@@ -198,223 +198,23 @@ CREATE SOURCE CONNECTOR connect_single_string_str WITH (
 );
 
 CREATE SOURCE CONNECTOR connect_single_string_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='single_string_',
+'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
+'connection.url'='jdbc:mysql://mysql:3306/demo',
+'connection.user'='example-user',
+'connection.password'='example-pw',
+'topic.prefix'='single_string_',
 
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
+'key.converter.schema.registry.url' = 'http://schema-registry:8081',
+'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
 
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
+'poll.interval.ms'=5000,
+'table.whitelist'='demo.event_int',
+'mode'='incrementing',
+'incrementing.column.name'='id',
 
     'transforms'='createKey,extractFieldAskey',
     'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
     'transforms.createKey.fields'='user_id',
     'transforms.extractFieldAskey.type'='org.apache.kafka.connect.transforms.ExtractField$Key',
     'transforms.extractFieldAskey.field'='user_id'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_avro_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_avro_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.avro.AvroConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_avro_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_avro_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.avro.AvroConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_protobuf_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_protobuf_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_protobuf_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_protobuf_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.protobuf.ProtobufConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_jsonschema_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_jsonschema_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_jsonschema_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_jsonschema_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'io.confluent.connect.json.JsonSchemaConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_json_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_json_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_json_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_json_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.json.JsonConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_string_str WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_string_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_str',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
-);
-
-CREATE SOURCE CONNECTOR connect_multiple_string_int WITH (
-    'connector.class'='io.confluent.connect.jdbc.JdbcSourceConnector',
-    'connection.url'='jdbc:mysql://mysql:3306/demo',
-    'connection.user'='example-user',
-    'connection.password'='example-pw',
-    'topic.prefix'='multiple_string_',
-
-    'key.converter.schema.registry.url' = 'http://schema-registry:8081',
-    'key.converter' = 'org.apache.kafka.connect.storage.StringConverter',
-
-    'poll.interval.ms'=5000,
-    'table.whitelist'='demo.event_int',
-    'mode'='incrementing',
-    'incrementing.column.name'='id',
-
-    'transforms'='createKey',
-    'transforms.createKey.type'='org.apache.kafka.connect.transforms.ValueToKey',
-    'transforms.createKey.fields'='user_id,reason'
 );

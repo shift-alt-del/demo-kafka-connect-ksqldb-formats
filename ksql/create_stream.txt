@@ -6,11 +6,3 @@ CREATE STREAM s_single_json_str WITH (kafka_topic='single_json_event_str', key_f
 CREATE STREAM s_single_json_int WITH (kafka_topic='single_json_event_int', key_format='JSON', value_format='AVRO');
 CREATE STREAM s_single_string_str WITH (kafka_topic='single_string_event_str', key_format='KAFKA', value_format='AVRO');
 CREATE STREAM s_single_string_int WITH (kafka_topic='single_string_event_int', key_format='KAFKA', value_format='AVRO');
-CREATE STREAM s_multiple_avro_str WITH (kafka_topic='multiple_avro_event_str', key_format='AVRO', value_format='AVRO');
-CREATE STREAM s_multiple_avro_int WITH (kafka_topic='multiple_avro_event_int', key_format='AVRO', value_format='AVRO');
-CREATE STREAM s_multiple_jsonschema_str WITH (kafka_topic='multiple_jsonschema_event_str', key_format='JSON_SR', value_format='AVRO');
-CREATE STREAM s_multiple_jsonschema_int WITH (kafka_topic='multiple_jsonschema_event_int', key_format='JSON_SR', value_format='AVRO');
-CREATE STREAM s_multiple_json_str WITH (kafka_topic='multiple_json_event_str', key_format='JSON', value_format='AVRO');
-CREATE STREAM s_multiple_json_int WITH (kafka_topic='multiple_json_event_int', key_format='JSON', value_format='AVRO');
-CREATE STREAM s_multiple_string_str WITH (kafka_topic='multiple_string_event_str', key_format='KAFKA', value_format='AVRO');
-CREATE STREAM s_multiple_string_int WITH (kafka_topic='multiple_string_event_int', key_format='KAFKA', value_format='AVRO');
