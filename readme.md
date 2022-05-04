@@ -65,8 +65,6 @@ docker exec -i mysql mysql -uroot -pmysql-pw demo < ./mysql/add_data.sql
 
 # check tables creation
 docker exec -it mysql mysql -uroot -pmysql-pw demo -e "show tables;"
-docker exec -it mysql mysql -uroot -pmysql-pw demo -e "select * from event_str limit 1;"
-docker exec -it mysql mysql -uroot -pmysql-pw demo -e "select * from event_int limit 1;"
 ```
 
 ## init connect
@@ -109,11 +107,15 @@ RUN SCRIPT '/tmp/scripts/create_connect_dims.txt';
 
 
 # join single column
-select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_AVRO t on s.user_id = t.rowkey emit changes;
-select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_STRING t on s.user_id = t.rowkey emit changes;
+create stream t_join_single_avro as
+    select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_AVRO t on s.user_id = t.rowkey emit changes;
+
+create stream t_join_single_str as
+    select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_STRING t on s.user_id = t.rowkey emit changes;
 
 # join multiple column
-select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_REASON_AVRO t on STRUCT(user_id:=s.user_id, reason_id:=s.reason) = t.rowkey emit changes;
+create stream t_join_multiple_avro as
+    select * from S_SINGLE_AVRO_STR s left join T_DIM_USER_REASON_AVRO t on STRUCT(user_id:=s.user_id, reason_id:=s.reason) = t.rowkey emit changes;
 ```
 
 ## fin

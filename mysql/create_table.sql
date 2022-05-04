@@ -4,8 +4,8 @@ TRUNCATE TABLE event_int;
 TRUNCATE TABLE event_str;
 
 
-CREATE TABLE IF NOT EXISTS dim_user (user_id VARCHAR(32), user_attribute TEXT, PRIMARY KEY (user_id));
+CREATE TABLE IF NOT EXISTS dim_user (user_id VARCHAR(32), user_attribute TEXT, ts TEXT, PRIMARY KEY (user_id));
 TRUNCATE TABLE dim_user;
 
-CREATE TABLE IF NOT EXISTS dim_user_reason (user_id VARCHAR(32), reason_id VARCHAR(32), user_reason_attribute TEXT, PRIMARY KEY (user_id, reason_id));
+CREATE TABLE IF NOT EXISTS dim_user_reason (user_id VARCHAR(32), reason_id VARCHAR(32), user_reason_attribute TEXT, ts TEXT, PRIMARY KEY (user_id, reason_id));
 TRUNCATE TABLE dim_user_reason;
