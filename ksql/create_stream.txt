@@ -1,8 +1,8 @@
-CREATE STREAM s_single_avro_str WITH (kafka_topic='single_avro_event_str', key_format='AVRO', value_format='AVRO');
-CREATE STREAM s_single_avro_int WITH (kafka_topic='single_avro_event_int', key_format='AVRO', value_format='AVRO');
-CREATE STREAM s_single_jsonschema_str WITH (kafka_topic='single_jsonschema_event_str', key_format='JSON_SR', value_format='AVRO');
-CREATE STREAM s_single_jsonschema_int WITH (kafka_topic='single_jsonschema_event_int', key_format='JSON_SR', value_format='AVRO');
-CREATE STREAM s_single_json_str WITH (kafka_topic='single_json_event_str', key_format='JSON', value_format='AVRO');
-CREATE STREAM s_single_json_int WITH (kafka_topic='single_json_event_int', key_format='JSON', value_format='AVRO');
-CREATE STREAM s_single_string_str WITH (kafka_topic='single_string_event_str', key_format='KAFKA', value_format='AVRO');
-CREATE STREAM s_single_string_int WITH (kafka_topic='single_string_event_int', key_format='KAFKA', value_format='AVRO');
+CREATE STREAM s_single_avro_str WITH (kafka_topic='single_avro_event_str', key_format='AVRO', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');
+CREATE STREAM s_single_avro_int WITH (kafka_topic='single_avro_event_int', key_format='AVRO', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');
+CREATE STREAM s_single_jsonschema_str WITH (kafka_topic='single_jsonschema_event_str', key_format='JSON_SR', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');
+CREATE STREAM s_single_jsonschema_int WITH (kafka_topic='single_jsonschema_event_int', key_format='JSON_SR', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');
+CREATE STREAM s_single_json_str WITH (kafka_topic='single_json_event_str', key_format='JSON', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');
+CREATE STREAM s_single_json_int WITH (kafka_topic='single_json_event_int', key_format='JSON', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');
+CREATE STREAM s_single_string_str WITH (kafka_topic='single_string_event_str', key_format='KAFKA', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');
+CREATE STREAM s_single_string_int WITH (kafka_topic='single_string_event_int', key_format='KAFKA', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');

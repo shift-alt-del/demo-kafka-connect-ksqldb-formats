@@ -108,7 +108,7 @@ CREATE SOURCE CONNECTOR {connector_id} WITH (
                     Please see https://github.com/confluentinc/ksql/issues/ to see if this particular reason is already known.
                     If not, please log a new issue, including this full error message.
                     """
-                    fcs.write(f"""CREATE STREAM {stream_id} WITH (kafka_topic='{dest_topic_name}', key_format='{KSQL_FORMAT_MAPPING[short_converter_name]}', value_format='AVRO');\n""")
+                    fcs.write(f"""CREATE STREAM {stream_id} WITH (kafka_topic='{dest_topic_name}', key_format='{KSQL_FORMAT_MAPPING[short_converter_name]}', value_format='AVRO', TIMESTAMP = 'ts', TIMESTAMP_FORMAT = 'yyyy-MM-dd''T''HH:mm:ss');\n""")
                     fds.write(f"""DROP STREAM {stream_id};\n""")
                 else:
                     pass
